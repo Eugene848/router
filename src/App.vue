@@ -1,28 +1,48 @@
 <template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
-  </div>
+  <v-app>
+    <v-app-bar color="blue darken" dark app>
+      <v-app-bar-nav-icon v-on:click="navigation = !navigation"></v-app-bar-nav-icon>
+      <v-toolbar-title>
+        НОВОСТИ
+      </v-toolbar-title>
+    </v-app-bar>
+    <v-navigation-drawer v-model="navigation" absolute temporary>
+
+      <v-list nav dense>
+        <v-list-item link to="/ru">
+          <v-hover>
+            <v-list-item-title>Россия</v-list-item-title>
+          </v-hover>
+        </v-list-item>
+
+        <v-space></v-space>
+
+        <v-list-item link to="/us">
+          <v-list-item-title>USA</v-list-item-title>
+        </v-list-item>
+      </v-list>
+
+    </v-navigation-drawer>
+
+    <v-content app>
+      <router-view/>
+    </v-content>
+    
+  </v-app>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import NewsItem from './components/NewsItem.vue';
 
 export default {
   name: 'App',
-  components: {
-    HelloWorld
-  }
-}
-</script>
 
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-</style>
+  components: {
+    NewsItem
+  },
+
+  data: () => ({
+    navigation: false
+  })
+};
+</script>
