@@ -32,14 +32,9 @@
 </template>
 
 <script>
-import NewsItem from './components/NewsItem.vue';
 
 export default {
   name: 'App',
-
-  components: {
-    NewsItem
-  },
 
   data: () => ({
     navigation: false

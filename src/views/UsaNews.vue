@@ -20,8 +20,10 @@
 
 <script>
 
+import NewsItem from '../components/NewsItem.vue';
+
 export default {
-    name: 'Rus',
+    name: 'UsaNews',
 
     components: {
         NewsItem
@@ -29,14 +31,14 @@ export default {
 
     data: () => ({
         navigation: false,
-        props: ['img', 'title']
+        news: []
     }),
 
     methods: {
         getNews() {
             this.axios({
                 method: 'GET',
-                url: "https://newsapi.org/v2/top-headlines?country=ru&apiKey=d7f41a32c26b4bbfb596d58b1a54c766"
+                url: "https://newsapi.org/v2/top-headlines?country=us&apiKey=d7f41a32c26b4bbfb596d58b1a54c766"
             }).then((response) => {
                 this.news = response.data.articles;
             })
